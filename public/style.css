@@ -61,8 +61,21 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   background-color: #f0f0f0;
-  flex: 0 0 calc(15% - 20px);
+  flex: 0 0 calc(15% - 18px);
   height: 380px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .anime-card {
+    flex: 0 0 calc(28% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .anime-card {
+    flex: 0 0 calc(44% - 20px);
+  }
 }
 
 .anime-image-container {
