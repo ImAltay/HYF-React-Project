@@ -2,15 +2,19 @@ import { useParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchAnimeById } from '../utils/FetchFunctions';
 import { ANIME_PAGE_CONTAINER } from '../utils/constants';
+import { useWatchList } from '../utils/hooks';
+import { toggleWatchListImage } from '../utils/utils';
 
 const AnimePage = () => {
     const { id } = useParams();
     const [anime, setAnime] = useState(null);
 
+    const toggleWatchList = useWatchList().toggleWatchList;
+    const watchList = useWatchList().watchList;
+
     const fetchAnime = useCallback(async () => {
         const data = await fetchAnimeById(id);
         setAnime(data);
-        console.log(data)
     }, [id]);
 
     useEffect(() => {
@@ -28,6 +32,13 @@ const AnimePage = () => {
                     <p><strong>Status:</strong>{anime.status}</p>
                     <p><strong>Rating:</strong>{anime.rating}</p>
                     <p><strong>Score: </strong>{anime.score}</p>
+                    <img
+        src={toggleWatchListImage(watchList, anime.id)}
+        className='watchlist-icon'
+        onClick={() => {
+          toggleWatchList(anime.id);
+        }}
+      />
                 </div>
             ) : (
                 <p>Loading...</p>
