@@ -1,12 +1,11 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchAnimeById } from '../utils/FetchFunctions';
+import { ANIME_PAGE_CONTAINER } from '../utils/constants';
 
 const AnimePage = () => {
     const { id } = useParams();
     const [anime, setAnime] = useState(null);
-    const navigate = useNavigate();
 
     const fetchAnime = useCallback(async () => {
         const data = await fetchAnimeById(id);
@@ -21,14 +20,14 @@ const AnimePage = () => {
     return (
         <div>
             {anime ? (
-                <div>
-                    <h1>{anime.title}</h1>
+                <div className={ANIME_PAGE_CONTAINER}>
+                    <h1>{anime.title} / {anime.titleJP}</h1>
                     <img src={anime.image_url} alt={anime.title} />
-                    <p>{anime.synopsis}</p>
-                    <p>{anime.genres.map(genre => genre.name).join(', ')}</p>
-                    <p>{anime.status}</p>
-                    <p>{anime.rating}</p>
-                    <p>{anime.score}</p>
+                    <p><strong>Synopsis:</strong>{anime.synopsis}</p>
+                    <p><strong>Genres: </strong>{anime.genres.map(genre => genre.name).join(', ')}</p>
+                    <p><strong>Status:</strong>{anime.status}</p>
+                    <p><strong>Rating:</strong>{anime.rating}</p>
+                    <p><strong>Score: </strong>{anime.score}</p>
                 </div>
             ) : (
                 <p>Loading...</p>

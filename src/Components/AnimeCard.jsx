@@ -32,6 +32,7 @@ const AnimeCard = ({ anime }) => {
             HandleAnimeClick(id);
           }}
         />
+        
          
       <h2
         onClick={() => {
@@ -40,6 +41,13 @@ const AnimeCard = ({ anime }) => {
         className={`${ANIME_TITLE} ${BUTTON_MAKER}`}>
         {title} <span>{titleJP}</span>
       </h2>
+      <img
+        src={toggleWatchListImage(watchList, id)}
+        className='watchlist-icon'
+        onClick={() => {
+          toggleWatchList(id);
+        }}
+      />
       <p>
         <strong>Status: </strong>
         {status} / <strong>Rating:</strong> {rating} <strong>Score: </strong>
@@ -48,13 +56,7 @@ const AnimeCard = ({ anime }) => {
       <p>
         <strong>Genres:</strong> {genres.join(', ')}
       </p>
-      <img
-        src={toggleWatchListImage(watchList, id)}
-        className='watchlist-icon'
-        onClick={() => {
-          toggleWatchList(id);
-        }}
-      />
+      
     </div>
   );
 };

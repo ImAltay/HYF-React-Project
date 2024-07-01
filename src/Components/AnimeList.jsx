@@ -5,7 +5,7 @@ import {
   fetchAnimeById,
 } from '../utils/FetchFunctions';
 import { animeSummary } from '../utils/utils';
-import AnimeSingle from './AnimeCard';
+import AnimeCard from './AnimeCard';
 import {
   ANIME_LIST_SHOWCASE,
   ANIME_LIST_CONTAINER,
@@ -21,6 +21,7 @@ const AnimeList = ({ list }) => {
   const { watchList } = useWatchList();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [title, setTitle] = useState('Top Animes');
 
   useEffect(() => {
     const fetchAnimes = async () => {
@@ -31,12 +32,15 @@ const AnimeList = ({ list }) => {
         if (list === WATCHLIST) {
           data = await Promise.all(watchList.map((id) => fetchAnimeById(id)));
           setAnimes(data);
+          setTitle(WATCHLIST);
         } else if (list === TOP_ANIMES) {
           data = await fetchTopAnimes();
           setAnimes(data.map(animeSummary));
+          setTitle(TOP_ANIMES);
         } else {
           data = await fetchAnimeBySearch(list);
           setAnimes(data.map(animeSummary));
+          setTitle(SEARCH_RESULTS);
         }
       } catch (error) {
         setError(error);
@@ -58,11 +62,11 @@ const AnimeList = ({ list }) => {
 
   return (
     <div className={ANIME_LIST_SHOWCASE}>
-      <h1> {list ? list : SEARCH_RESULTS} </h1>
+      <h1> {title} </h1>
       <div className={ANIME_LIST_CONTAINER}>
         {animes.length > 0 ? (
           animes.map((anime, index) => (
-            <AnimeSingle key={index} anime={anime} onClick />
+            <AnimeCard key={index} anime={anime} onClick />
           ))
         ) : (
           <p>Loading...</p>

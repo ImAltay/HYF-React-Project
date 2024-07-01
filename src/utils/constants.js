@@ -11,6 +11,8 @@ export const ANIME_CARD_IMAGE = 'anime-card-image';
 
 export const BUTTON_MAKER = 'button-maker';
 
+export const ANIME_PAGE_CONTAINER = 'anime-page-container';
+
 // Anime List Titles
 
 export const TOP_ANIMES = 'Top Animes';
