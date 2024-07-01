@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchAnimeById } from '../utils/FetchFunctions';
-import { ANIME_PAGE_CONTAINER } from '../utils/constants';
+import { ANIME_PAGE_CONTAINER, ANIME_PAGE_IMAGE, WATCHLIST_ICON } from '../utils/constants';
 import { useWatchList } from '../utils/hooks';
 import { toggleWatchListImage } from '../utils/utils';
 
@@ -26,7 +26,7 @@ const AnimePage = () => {
             {anime ? (
                 <div className={ANIME_PAGE_CONTAINER}>
                     <h1>{anime.title} / {anime.titleJP}</h1>
-                    <img src={anime.image_url} alt={anime.title} />
+                    <img src={anime.image_url} alt={anime.title} className={ANIME_PAGE_IMAGE} />
                     <p><strong>Synopsis:</strong>{anime.synopsis}</p>
                     <p><strong>Genres: </strong>{anime.genres.map(genre => genre.name).join(', ')}</p>
                     <p><strong>Status:</strong>{anime.status}</p>
@@ -34,7 +34,7 @@ const AnimePage = () => {
                     <p><strong>Score: </strong>{anime.score}</p>
                     <img
         src={toggleWatchListImage(watchList, anime.id)}
-        className='watchlist-icon'
+        className={WATCHLIST_ICON}
         onClick={() => {
           toggleWatchList(anime.id);
         }}

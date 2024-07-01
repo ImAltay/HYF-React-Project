@@ -4,6 +4,7 @@ import {
   ANIME_TITLE,
   ANIME_CARD_IMAGE,
   BUTTON_MAKER,
+  WATCHLIST_ICON
 } from '../utils/constants';
 import { toggleWatchListImage } from '../utils/utils';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +44,7 @@ const AnimeCard = ({ anime }) => {
       </h2>
       <img
         src={toggleWatchListImage(watchList, id)}
-        className='watchlist-icon'
+        className={WATCHLIST_ICON}
         onClick={() => {
           toggleWatchList(id);
         }}

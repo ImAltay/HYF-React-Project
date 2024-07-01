@@ -13,6 +13,9 @@ export const BUTTON_MAKER = 'button-maker';
 
 export const ANIME_PAGE_CONTAINER = 'anime-page-container';
 
+export const WATCHLIST_ICON = 'watchlist-icon';
+export const ANIME_PAGE_IMAGE = 'anime-page-image';
+
 // Anime List Titles
 
 export const TOP_ANIMES = 'Top Animes';
