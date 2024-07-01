@@ -4,7 +4,7 @@ import {
   ANIME_TITLE,
   ANIME_CARD_IMAGE,
   BUTTON_MAKER,
-  WATCHLIST_ICON
+  WATCHLIST_ICON,
 } from '../utils/constants';
 import { toggleWatchListImage } from '../utils/utils';
 import { useNavigate } from 'react-router-dom';
@@ -24,17 +24,15 @@ const AnimeCard = ({ anime }) => {
   };
   return (
     <div className={ANIME_CARD}>
-      
-        <img
-          className={`${BUTTON_MAKER} ${ANIME_CARD_IMAGE}`}
-          src={image_url}
-          alt={title}
-          onClick={() => {
-            HandleAnimeClick(id);
-          }}
-        />
-        
-         
+      <img
+        className={`${BUTTON_MAKER} ${ANIME_CARD_IMAGE}`}
+        src={image_url}
+        alt={title}
+        onClick={() => {
+          HandleAnimeClick(id);
+        }}
+      />
+
       <h2
         onClick={() => {
           HandleAnimeClick(id);
@@ -57,7 +55,6 @@ const AnimeCard = ({ anime }) => {
       <p>
         <strong>Genres:</strong> {genres.join(', ')}
       </p>
-      
     </div>
   );
 };

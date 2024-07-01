@@ -52,6 +52,10 @@ const AnimeList = ({ list }) => {
     fetchAnimes();
   }, [list]);
 
+  if (list === WATCHLIST && watchList.length === 0) {
+    return <p>Watchlist is empty</p>;
+  }
+
   if (error) {
     return <p>{error.message}</p>;
   }
