@@ -52,7 +52,7 @@ const AnimeCard = ({ anime }) => {
       <p>
         <strong>Status: </strong>
         {status} / <strong>Rating:</strong> {rating} <strong>Score: </strong>
-        {score}{' '}
+        {score}
       </p>
       <p>
         <strong>Genres:</strong> {genres.join(', ')}

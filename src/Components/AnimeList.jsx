@@ -50,7 +50,7 @@ const AnimeList = ({ list }) => {
     };
 
     fetchAnimes();
-  }, [list, watchList]);
+  }, [list]);
 
   if (error) {
     return <p>{error.message}</p>;
