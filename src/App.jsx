@@ -1,8 +1,13 @@
 import AnimeList from './Components/AnimeList'
-import AnimeSingle from './Components/AnimeSingle'
+import AnimePage from './Components/AnimePage'
+import WatchList from './Components/WatchList'
+import AnimeSearchList from './Components/AnimeSearchList'
+import SearchBar from './Components/SearchBar'
 import Footer from './Components/Footer'
 import Header from './Components/Header'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { TOP_ANIMES } from './utils/constants'
+import { WatchListProvider } from './contexts/WatchListContext'
 
 
 function App() {
@@ -11,10 +16,15 @@ function App() {
     <>
       <Router>
         <Header />
+       
+        <WatchListProvider>
         <Routes>
-          <Route path="/"  element={<AnimeList />} />
-          <Route path="/anime/:id" element={<AnimeSingle />} />
+          <Route path="/"  element={<AnimeList list={TOP_ANIMES} />} />
+          <Route path="/anime/:id" element={<AnimePage />} />
+          <Route path="/watchlist" element={<WatchList />} />
+          <Route path="/search/:text" element={<AnimeSearchList  />} />
         </Routes>
+        </WatchListProvider>
       </Router>
         <Footer />
     </>

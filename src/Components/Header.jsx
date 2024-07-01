@@ -1,17 +1,30 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { NAV_BAR } from '../utils/constants';
+import SearchBar from './SearchBar';
 
 const Header = () => {
-    return (
-        <header>
-        <nav className="nav-bar">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/anime">Anime</a></li>
-                <li><a href="/manga">My List</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </nav>
-        </header>
-    )
-    }
+  const navigate = useNavigate();
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+  const handleWatchlistClick = () => {
+    navigate('/watchlist');
+  };
+  return (
+    <header>
+      <nav className={NAV_BAR}>
+      <SearchBar />
+        <ul>
+          <li>
+            <a onClick={() => handleHomeClick()}>Home</a>
+          </li>
+          <li>
+            <a onClick={() => handleWatchlistClick()}>Watch List</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
 export default Header;

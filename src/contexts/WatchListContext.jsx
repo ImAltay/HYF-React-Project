@@ -5,7 +5,6 @@ export const WatchListContext = React.createContext();
 
 export const WatchListProvider = ({children}) => {
   const [watchList, setWatchList] = useState([]);
-  const [isWatchListPage, setIsWatchListPage] = useState(false);
 
  const toggleWatchList = (animeID) => {
     if (watchList.includes(animeID)) {
@@ -16,7 +15,7 @@ export const WatchListProvider = ({children}) => {
      };
 
     return (
-      <WatchListContext.Provider value={{watchList, toggleWatchList, isWatchListPage, setIsWatchListPage}}>
+      <WatchListContext.Provider value={{watchList, toggleWatchList}}>
         {children}
       </WatchListContext.Provider>
     );
